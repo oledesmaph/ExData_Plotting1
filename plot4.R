@@ -4,6 +4,12 @@
 # Clean upworkspace
 rm(list=ls())
 
+# If the raw data has not been saved, download, unzip, and load it.
+if (!file.exists('household_power_consumption.txt')) {
+          download.file('https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip', destfile='raw-power-data.zip')
+          unzip('raw-power-data.zip')
+}
+
 # Load data
 myData <- read.table("household_power_consumption.txt",header=TRUE,sep=";",colClasses="character")
 
